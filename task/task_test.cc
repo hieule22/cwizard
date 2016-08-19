@@ -29,7 +29,7 @@ TEST(TaskTest, LoadAndSave) {
   {
     auto task = Task::Load(&stream);
     ASSERT_TRUE(task != nullptr);
-    // EXPECT_EQ(task->GetName(), "Quoz");
+    EXPECT_EQ(task->GetName(), "Quoz");
   }
 }
 
