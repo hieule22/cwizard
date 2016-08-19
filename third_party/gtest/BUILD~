@@ -1,0 +1,16 @@
+licenses(["notice"])
+
+cc_library(
+  name = "gtest_main",
+  srcs = glob(
+      ["gtest/src/*.cc"],
+      exclude = ["gtest/src/gtest-all.cc"]
+    ),
+  hdrs = glob([
+      "gtest/include/**/*.h",
+      "gtest/src/*.h"
+  ]),
+  copts = ["-Ithird_party/gtest/include"],
+  linkopts = ["-pthread"],
+  visibility = ["//visibility:public"],
+)

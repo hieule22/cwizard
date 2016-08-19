@@ -1,0 +1,8 @@
+#ifndef CONTEST_WIZARD_FILE_UTIL_H__
+#define CONTEST_WIZARD_FILE_UTIL_H__
+
+namespace contest_wizard {
+
+}  // namespace contest_wizard
+
+#endif  // CONTEST_WIZARD_FILE_UTIL_H__
