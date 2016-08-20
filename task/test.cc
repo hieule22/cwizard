@@ -1,12 +1,16 @@
+// Copyright 2016 Hieu Le
+
 #include "task/test.h"
 
 #include <algorithm>
 #include <sstream>
+#include <utility>
 
 namespace contest_wizard {
 
-Test::Test(const std::string& input, const std::string& output, int index)
-    : input_(input), output_(output), index_(index) {}
+Test::Test(const std::string& input, const std::string& output,
+           int index, bool active)
+    : input_(input), output_(output), index_(index), active_(active) {}
 
 std::string Test::DebugString() const {
   std::string input_rep = input_;
@@ -19,16 +23,29 @@ std::string Test::DebugString() const {
   return debug_stream.str();
 }
 
+Test Test::SetIndex(int index) {
+  return Test(input_, output_, index, active_);
+}
+
+Test Test::SetActive(bool active) {
+  return Test(input_, output_, index_, active);
+}
+
 void Test::Save(std::ostream* out) const {
-  *out << index_ << std::endl << input_ << std::endl << output_;
+  *out << index_ << std::endl;
+  *out << input_ << std::endl;
+  *out << output_ << std::endl;
+  *out << active_ << std::endl;
 }
 
 std::unique_ptr<Test> Test::Load(std::istream* in) {
   int index;
   std::string input;
   std::string output;
-  *in >> index >> input >> output;
-  return std::make_unique<Test>(std::move(input), std::move(output), index);
+  bool active;
+  *in >> index >> input >> output >> active;
+  return std::make_unique<Test>(
+      std::move(input), std::move(output), index, active);
 }
 
 const std::string& Test::GetInput() const {
@@ -41,6 +58,10 @@ const std::string& Test::GetOutput() const {
 
 int Test::GetIndex() const {
   return index_;
+}
+
+bool Test::GetActive() const {
+  return active_;
 }
 
 }  // namespace contest_wizard

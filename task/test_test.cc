@@ -1,3 +1,5 @@
+// Copyright 2016 Hieu Le.
+
 #include "task/test.h"
 
 #include <sstream>
@@ -7,14 +9,15 @@
 namespace {
 
 TEST(TestTest, Accessor) {
-  ::contest_wizard::Test test("Foo", "Bar", 12345);
+  ::contest_wizard::Test test("Foo", "Bar", 12345, true);
   EXPECT_EQ(test.GetInput(), "Foo");
   EXPECT_EQ(test.GetOutput(), "Bar");
   EXPECT_EQ(test.GetIndex(), 12345);
+  EXPECT_EQ(test.GetActive(), true);
 }
 
 TEST(TestTest, DebugString) {
-  ::contest_wizard::Test test("Foo", "", 12345);
+  ::contest_wizard::Test test("Foo", "", 12345, true);
   EXPECT_EQ(test.DebugString(), "Test #12345: Foo");
 
   ::contest_wizard::Test test_with_newline("Foo\nBar", "", 12345);
@@ -27,20 +30,21 @@ TEST(TestTest, DebugString) {
 }
 
 TEST(TestTest, Save) {
-  ::contest_wizard::Test test("Foo", "Bar", 12345);
+  ::contest_wizard::Test test("Foo", "Bar", 12345, true);
   std::stringstream out;
   test.Save(&out);
-  EXPECT_EQ(out.str(), "12345\nFoo\nBar");
+  EXPECT_EQ(out.str(), "12345\nFoo\nBar\n1\n");
 }
 
 TEST(TestTest, Load) {
   std::stringstream in;
-  in.str("1 Foo Bar");
+  in.str("1 Foo Bar 1");
   auto test = ::contest_wizard::Test::Load(&in);
   ASSERT_TRUE(test != nullptr);
   EXPECT_EQ(test->GetInput(), "Foo");
   EXPECT_EQ(test->GetOutput(), "Bar");
   EXPECT_EQ(test->GetIndex(), 1);
+  EXPECT_EQ(test->GetActive(), true);
 }
 
 }  // namespace
