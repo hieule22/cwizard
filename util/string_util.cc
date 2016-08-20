@@ -3,8 +3,6 @@
 #include <algorithm>
 #include <sstream>
 
-#include "boost/filesystem.hpp"
-
 namespace contest_wizard {
 
 std::string StrCat(std::initializer_list<std::string> args) {
@@ -18,11 +16,6 @@ std::string StrCat(std::initializer_list<std::string> args) {
 std::string ToLower(std::string str) {
   std::transform(str.begin(), str.end(), str.begin(), ::tolower);
   return str;
-}
-
-bool ExistFile(const std::string& directory) {
-  boost::filesystem::path p(directory);
-  return boost::filesystem::exists(p);
 }
 
 }

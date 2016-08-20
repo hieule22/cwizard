@@ -12,8 +12,6 @@ std::string StrCat(std::initializer_list<std::string> args);
 // Converts an input string into its lowercase equivalent.
 std::string ToLower(std::string str);
 
-bool ExistFile(const std::string& directory);
-
 }  // namespace contest_wizard
 
 #endif  // CONTEST_WIZARD_UTIL_STRING_UTIL_H__

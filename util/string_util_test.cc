@@ -21,9 +21,5 @@ TEST(ToLowerTest, Basic) {
   EXPECT_EQ(ToLower("FOO bar fooBAR123"), "foo bar foobar123");
 }
 
-TEST(ExistFileTest, Basic) {
-  EXPECT_FALSE(ExistFile("Foo"));
-}
-
 }  // namespace
 }  // namespace contest_wizard
