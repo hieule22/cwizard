@@ -13,6 +13,9 @@ class OutputWriter {
  public:
   OutputWriter(std::unique_ptr<std::ostream> out);
 
+  template <typename T>
+  void PrintLine(const T& val);
+
   void PrintString(const std::string& val);
 
   void PrintBool(bool val);

@@ -8,6 +8,15 @@
 namespace contest_wizard {
 namespace {
 
+TEST(OutputWriterTest, PrintLine) {
+  std::stringstream buffer;
+  std::unique_ptr<std::ostream> out =
+      std::make_unique<std::ostream>(buffer.rdbuf());
+  OutputWriter writer(std::move(out));
+  writer.PrintLine(1);
+  EXPECT_EQ(buffer.str(), "1\n");
+}
+
 TEST(OutputWriterTest, PrintString) {
   std::stringstream buffer;
   std::unique_ptr<std::ostream> out =
