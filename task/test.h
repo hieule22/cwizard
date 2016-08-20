@@ -18,22 +18,22 @@ class Test {
   explicit Test(const std::string& input, const std::string& output = "",
                 int index = -1, bool active = true);
 
-  // Returns a human-friendly representation of the test instance.
-  // Returned value is of the form "Test #$index: input_". Input exceeding 15
+  // Returns a human-friendly representation of this instance.
+  // Returned value is of the form "Test #$index: $input". Input exceeding 15
   // characters will be truncated and prefixed with "...".
   std::string DebugString() const;
 
   // Returns a test constructed from this instance but with a different index.
   Test SetIndex(int index);
 
-  // Returns a test constructed from this instance but with a different active.
+  // Returns a test constructed from this instance but with a different active
   // setting.
   Test SetActive(bool active);
 
   // Saves test to output stream.
   void Save(std::ostream* out) const;
 
-  // Loads test from input stream.
+  // Loads test from input stream. Returns nullptr if test cannot be loaded.
   static std::unique_ptr<Test> Load(std::istream* in);
 
   // Returns input and output associated with this instance.
