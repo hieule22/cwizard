@@ -1,8 +1,11 @@
+// Wrapper class for an output stream.
+
 #ifndef CONTEST_WIZARD_UTIL_OUTPUT_WRITER_H__
 #define CONTEST_WIZARD_UTIL_OUTPUT_WRITER_H__
 
 #include <memory>
 #include <ostream>
+#include <string>
 
 namespace contest_wizard {
 
@@ -10,6 +13,11 @@ class OutputWriter {
  public:
   OutputWriter(std::unique_ptr<std::ostream> out);
 
+  void PrintString(const std::string& val);
+
+  void PrintBool(bool val);
+
+  void Flush();
   
  private:
   const std::unique_ptr<std::ostream> out_stream_;
