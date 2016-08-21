@@ -1,5 +1,8 @@
-#ifndef CONTEST_WIZARD_TASK_TASK_H__
-#define CONTEST_WIZARD_TASK_TASK_H__
+// Representation of a problem task.
+// Copyright 2016 Hieu Le.
+
+#ifndef TASK_TASK_H__
+#define TASK_TASK_H__
 
 #include <istream>
 #include <memory>
@@ -11,15 +14,18 @@
 
 namespace contest_wizard {
 
+// Information needed to set up a task.
 struct TaskConfig {
+  // Task name.
   std::string name;
+  // Tests associated with this task.
   std::vector<Test> tests;
 };
 
 class Task {
  public:
-  Task(const TaskConfig& config);
-  Task(TaskConfig&& config);
+  explicit Task(const TaskConfig& config);
+  explicit Task(TaskConfig&& config);
 
   // Loads task from input stream.
   // Returns nullptr if load fails.
@@ -30,7 +36,7 @@ class Task {
 
   // Accessor
   const std::string& GetName() const;
-  
+
  private:
   const std::string name_;
   const std::vector<Test> tests_;
@@ -38,4 +44,4 @@ class Task {
 
 }  // namespace contest_wizard
 
-#endif  // CONTEST_WIZARD_TASK_TASK_H__
+#endif  // TASK_TASK_H__

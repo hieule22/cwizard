@@ -1,4 +1,8 @@
+// Copyright 2016 Hieu Le.
+
 #include "task/task.h"
+
+#include <utility>
 
 #include "third_party/easyloggingpp/src/easylogging++.h"
 

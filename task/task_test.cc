@@ -1,4 +1,4 @@
-#include "task/task.h"
+// Copyright 2016 Hieu Le.
 
 #include <sstream>
 
