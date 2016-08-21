@@ -1,3 +1,5 @@
+// Copyright 2016 Hieu Le.
+
 #include "util/string_util.h"
 
 #include <iostream>

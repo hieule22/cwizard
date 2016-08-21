@@ -1,17 +1,30 @@
-#ifndef CONTEST_WIZARD_FILE_UTIL_H__
-#define CONTEST_WIZARD_FILE_UTIL_H__
+// Utility classes and functions to access, query and manipulate files and
+// directories.
+// Copyright 2016 Hieu Le.
+
+#ifndef UTIL_FILE_UTIL_H__
+#define UTIL_FILE_UTIL_H__
 
 #include <memory>
-#include <istream>
 #include <string>
+
+#include "task/task.h"
+#include "util/status.h"
 
 namespace contest_wizard {
 
-// Returns an input stream associated with the input file.
-// Returned stream remains property of the factory and will
-// be destroyed when the factory is destroyed.
-std::istream* GetInputStream(const std::string& file);
+// Checks if the entity referenced by given pathname exists and is a directory.
+bool IsDirectory(const std::string& pathname);
+
+// Creates a directory referenced by given pathname.
+Status MakeDirectory(const std::string& pathname);
+
+bool WriteTextFile(const std::string& filename, const std::string& content);
+
+std::string ReadTextFile(const std::string& filename);
+
+std::unique_ptr<Task> ReadTask(const std::string& filename);
 
 }  // namespace contest_wizard
 
-#endif  // CONTEST_WIZARD_FILE_UTIL_H__
+#endif  // UTIL_FILE_UTIL_H__
