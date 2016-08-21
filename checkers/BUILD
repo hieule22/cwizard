@@ -36,6 +36,7 @@ cc_library(
 cc_test(
   name = "token-checker_test",
   srcs = ["token-checker_test.cc"],
+  size = "small",
   copts = ["--std=c++14"],
   deps = [
        ":token-checker",
