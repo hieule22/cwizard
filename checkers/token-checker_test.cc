@@ -1,3 +1,5 @@
+// Copyright 2016 Hieu Le.
+
 #include "checkers/token-checker.h"
 
 #include <memory>

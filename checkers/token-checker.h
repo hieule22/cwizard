@@ -1,8 +1,9 @@
 // Checker class that matches expected and actual output to a specified extent
 // of absolute and/or relative uncertainty.
+// Copyright 2016 Hieu Le.
 
-#ifndef CONTEST_WIZARD_CHECKERS_TOKEN_CHECKER_H__
-#define CONTEST_WIZARD_CHECKERS_TOKEN_CHECKER_H__
+#ifndef CHECKERS_TOKEN_CHECKER_H__
+#define CHECKERS_TOKEN_CHECKER_H__
 
 #include "checkers/checker.h"
 
@@ -16,6 +17,8 @@ class TokenChecker : public Checker {
   // relative difference.
   TokenChecker(double certainty, bool allow_absolute, bool allow_relative);
 
+  // Accepts output if and only if only its numerical tokens are within the
+  // certainly level from those of expected output.
   Verdict Check(const std::string& input,
                 const std::string& expected_output,
                 const std::string& actual_output) override;
@@ -28,4 +31,4 @@ class TokenChecker : public Checker {
 
 }  // namespace contest_wizard
 
-#endif  // CONTEST_WIZARD_CHECKERS_TOKEN_CHECKER_H__
+#endif  // CHECKERS_TOKEN_CHECKER_H__

@@ -1,3 +1,5 @@
+// Copyright 2016 Hieu Le.
+
 #include "checkers/strict-checker.h"
 
 #include <memory>

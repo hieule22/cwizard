@@ -2,8 +2,8 @@
 // output.
 // Copyright 2016 Hieu Le.
 
-#ifndef CONTEST_WIZARD_CHECKERS_STRICT_CHECKER_H__
-#define CONTEST_WIZARD_CHECKERS_STRICT_CHECKER_H__
+#ifndef CHECKERS_STRICT_CHECKER_H__
+#define CHECKERS_STRICT_CHECKER_H__
 
 #include "checkers/checker.h"
 
@@ -11,6 +11,7 @@ namespace contest_wizard {
 
 class StrictChecker : public Checker {
  public:
+  // Accepts output if and only if it exactly matches expected output.
   Verdict Check(const std::string& input,
                 const std::string& expected_output,
                 const std::string& actual_output) override;
@@ -18,4 +19,4 @@ class StrictChecker : public Checker {
 
 }  // namespace contest_wizard
 
-#endif  // CONTEST_WIZARD_CHECKERS_STRICT_CHECKER_H__
+#endif  // CHECKERS_STRICT_CHECKER_H__
