@@ -30,3 +30,18 @@ cc_test(
        "//third_party/gtest:gtest_main",
   ],
 )
+
+cc_library(
+  name = "status",
+  srcs = ["status.cc"],
+  hdrs = ["status.h"],
+)
+
+cc_test(
+  name = "status_test",
+  srcs = ["status_test.cc"],
+  deps = [
+       ":status",
+       "//third_party/gtest:gtest_main"
+  ],
+)

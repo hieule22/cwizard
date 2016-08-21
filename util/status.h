@@ -16,7 +16,7 @@ enum class Code {
   UNKNOWN = 2,
   INVALID_ARGUMENT = 3,
   DEADLINE_EXCEEDED = 4,
-    NOT_FOUND = 5,
+  NOT_FOUND = 5,
 };
 
 }  // namespace error
