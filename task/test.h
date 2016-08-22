@@ -43,7 +43,7 @@ class Test {
 
   // Returns index and active setting associated with this instance.
   int GetIndex() const;
-  bool GetActive() const;
+  bool IsActive() const;
 
  private:
   const std::string input_;

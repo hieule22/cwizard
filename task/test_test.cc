@@ -13,7 +13,7 @@ TEST(TestTest, Accessor) {
   EXPECT_EQ(test.GetInput(), "Foo");
   EXPECT_EQ(test.GetOutput(), "Bar");
   EXPECT_EQ(test.GetIndex(), 12345);
-  EXPECT_EQ(test.GetActive(), true);
+  EXPECT_EQ(test.IsActive(), true);
 }
 
 TEST(TestTest, DebugString) {
@@ -44,7 +44,7 @@ TEST(TestTest, Load) {
   EXPECT_EQ(test->GetInput(), "Foo");
   EXPECT_EQ(test->GetOutput(), "Bar");
   EXPECT_EQ(test->GetIndex(), 1);
-  EXPECT_EQ(test->GetActive(), true);
+  EXPECT_EQ(test->IsActive(), true);
 }
 
 }  // namespace

@@ -60,7 +60,7 @@ int Test::GetIndex() const {
   return index_;
 }
 
-bool Test::GetActive() const {
+bool Test::IsActive() const {
   return active_;
 }
 
