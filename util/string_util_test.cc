@@ -9,11 +9,16 @@
 namespace contest_wizard {
 namespace {
 
-TEST(StrCatTest, Basic) {
+TEST(StrCatTest, ConcatWithInitializerList) {
   EXPECT_EQ(StrCat({"Foo", "Bar", "Quoz"}), "FooBarQuoz");
   EXPECT_EQ(StrCat({"Foo", "Bar"}), "FooBar");
   EXPECT_EQ(StrCat({"Foo"}), "Foo");
   EXPECT_EQ(StrCat({}), "");
+}
+
+TEST(StrCatTest, ConcatWithMultipleArgs) {
+  EXPECT_EQ(StrCat("Foo", "Bar"), "FooBar");
+  EXPECT_EQ(StrCat("Foo", "Bar", "Quoz"), "FooBarQuoz");
 }
 
 TEST(ToLowerTest, Basic) {

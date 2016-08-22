@@ -24,6 +24,7 @@ cc_library(
 cc_test(
   name = "string_util_test",
   srcs = ["string_util_test.cc"],
+  size = "small",
   deps  = [
   	"//third_party/gtest:gtest_main",
         ":string_util",
