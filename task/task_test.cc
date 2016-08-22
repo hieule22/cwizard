@@ -1,5 +1,7 @@
 // Copyright 2016 Hieu Le.
 
+#include "task/task.h"
+
 #include <sstream>
 
 #include "gtest/gtest.h"
@@ -12,6 +14,18 @@ TEST(TaskTest, ConstructWithTaskConfig) {
   config.name = "Foo";
   Task task(config);
   EXPECT_EQ(task.GetName(), "Foo");
+}
+
+TEST(TaskTest, Accessors) {
+  TaskConfig config;
+  config.name = "Foo";
+  ::contest_wizard::Test test("Bar", "Quoz", 0);
+  config.tests.emplace_back(std::move(test));
+  Task task(std::move(config));
+  EXPECT_EQ(task.GetName(), "Foo");
+  const auto& tests = task.GetTests();
+  ASSERT_FALSE(tests.empty());
+  EXPECT_EQ(tests[0].GetIndex(), 0);
 }
 
 TEST(TaskTest, LoadAndSave) {

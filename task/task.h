@@ -34,7 +34,10 @@ class Task {
   // Saves task to output stream.
   void Save(std::ostream* out);
 
-  // Accessor
+  // Returns the tests associated with this task.
+  const std::vector<Test>& GetTests() const;
+
+  // Returns task name.
   const std::string& GetName() const;
 
  private:

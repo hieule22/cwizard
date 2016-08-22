@@ -38,6 +38,10 @@ void Task::Save(std::ostream* out) {
   }
 }
 
+const std::vector<Test>& Task::GetTests() const {
+  return tests_;
+}
+
 const std::string& Task::GetName() const {
   return name_;
 }
