@@ -22,6 +22,9 @@ std::string StrCat(const std::string& a0, const std::string& a1,
 // Converts an input string into its lowercase equivalent.
 std::string ToLower(std::string str);
 
+// Checks if string a contains string b.
+bool Contains(const std::string& a, const std::string& b);
+
 }  // namespace contest_wizard
 
 #endif  // UTIL_STRING_UTIL_H__

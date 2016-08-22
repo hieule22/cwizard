@@ -28,5 +28,12 @@ TEST(ToLowerTest, Basic) {
   EXPECT_EQ(ToLower("FOO bar fooBAR123"), "foo bar foobar123");
 }
 
+TEST(ContainsTest, Basic) {
+  EXPECT_TRUE(Contains("Foo", "F"));
+  EXPECT_TRUE(Contains("Foo", "Foo"));
+  EXPECT_TRUE(Contains("Foo", ""));
+  EXPECT_FALSE(Contains("Foo", "Bar"));
+}
+
 }  // namespace
 }  // namespace contest_wizard
