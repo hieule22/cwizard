@@ -9,6 +9,7 @@
 #include <sstream>
 
 #include "third_party/easyloggingpp/src/easylogging++.h"
+#include "util/string_util.h"
 
 INITIALIZE_EASYLOGGINGPP
 
@@ -43,9 +44,9 @@ TokenChecker::TokenChecker(double certainty, bool allow_absolute,
 
 Verdict TokenChecker::Check(const std::string& input,
                             const std::string& expected_output,
-                            const std::string& actual_output) {
+                            const std::string& actual_output) const {
   if (expected_output.empty()) {
-    return Verdict::kUndecided;
+    return Verdict(Outcome::kUndecided);
   }
 
   std::stringstream expected(expected_output);
@@ -66,7 +67,7 @@ Verdict TokenChecker::Check(const std::string& input,
           double absolute_diff = std::abs(expected_value - actual_value);
           double relative_diff = absolute_diff /
               (expected_value == 0 ? 1 : std::abs(expected_value));
-          
+
           double diff = DBL_MAX;
           if (allow_absolute_) {
             diff = std::min(diff, absolute_diff);
@@ -81,25 +82,26 @@ Verdict TokenChecker::Check(const std::string& input,
           }
         }
       }
-      LOG(ERROR) << "Difference in token #" << token_count << ".";
-      return Verdict::kRejected;
+      return Verdict(Outcome::kRejected, StrCat(
+          "Difference in token #", std::to_string(token_count), "."));
     }
   }
 
   if (IsExhausted(expected) && IsExhausted(actual)) {
     if (allow_absolute_ || allow_relative_) {
-      LOG(INFO) << "Maximal delta is " << max_delta << ".";
+      return Verdict(Outcome::kAccepted, StrCat(
+          "Maximal delta is ", std::to_string(max_delta), "."));
     }
-    return Verdict::kAccepted;
+    return Verdict(Outcome::kAccepted);
   }
 
   if (IsExhausted(expected)) {
-    LOG(ERROR) << "Only " << token_count << " token expected.";
-    return Verdict::kRejected;
+    return Verdict(Outcome::kRejected, StrCat(
+        "Only ", std::to_string(token_count), " token expected."));
   }
 
-  LOG(ERROR) << "More than " << token_count << " tokens expected.";
-  return Verdict::kRejected;
+  return Verdict(Outcome::kRejected, StrCat(
+      "More than ", std::to_string(token_count), " tokens expected."));
 }
 
 }  // namespace contest_wizard

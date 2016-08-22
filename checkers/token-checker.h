@@ -5,6 +5,8 @@
 #ifndef CHECKERS_TOKEN_CHECKER_H__
 #define CHECKERS_TOKEN_CHECKER_H__
 
+#include <string>
+
 #include "checkers/checker.h"
 
 namespace contest_wizard {
@@ -21,7 +23,7 @@ class TokenChecker : public Checker {
   // certainly level from those of expected output.
   Verdict Check(const std::string& input,
                 const std::string& expected_output,
-                const std::string& actual_output) override;
+                const std::string& actual_output) const override;
 
  private:
   double certainty_;

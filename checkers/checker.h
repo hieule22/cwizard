@@ -6,10 +6,9 @@
 
 #include <string>
 
-namespace contest_wizard {
+#include "checkers/verdict.h"
 
-// Result of a match.
-enum class Verdict { kUndecided, kAccepted, kRejected };
+namespace contest_wizard {
 
 // Base interface. Concrete implementation should derive Check() function.
 class Checker {
@@ -19,7 +18,7 @@ class Checker {
   // Returns verdict by comparing actual with expected output.
   virtual Verdict Check(const std::string& input,
                         const std::string& expected_output,
-                        const std::string& actual_output) = 0;
+                        const std::string& actual_output) const = 0;
 };
 
 }  // namespace contest_wizard
