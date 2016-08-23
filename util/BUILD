@@ -26,8 +26,9 @@ cc_test(
   srcs = ["string_util_test.cc"],
   size = "small",
   deps  = [
-  	"//third_party/gtest:gtest_main",
         ":string_util",
+  	"//third_party/easyloggingpp:easyloggingpp",
+  	"//third_party/gtest:gtest_main",
   ],	
 )
 
