@@ -9,5 +9,6 @@ cc_library(
        "//checkers:checker",
        "//checkers:strict-checker",
        "//task:task",
+       "//third_party/easyloggingpp:easyloggingpp",
   ],
 )

@@ -5,6 +5,8 @@
 #include <utility>
 #include <vector>
 
+#include "third_party/easyloggingpp/src/easylogging++.h"
+
 namespace contest_wizard {
 namespace {
 
@@ -18,6 +20,7 @@ TaskTester::TaskTester(const Task& task, std::unique_ptr<Checker> checker)
 
 bool TaskTester::Test(const std::string& result,
                       std::ostream* out_stream) const {
+  CHECK_NOTNULL(out_stream) << "Output stream has not been initialized.";
   std::ostream& out = *out_stream;
   out << "Task: " << task_.GetName() << std::endl;
   out << kSmallSeparator << std::endl;
