@@ -5,5 +5,9 @@ bazel-genfiles
 bazel-out
 bazel-testlogs
 
-# Emacs autosaves
+# Autosaves and temporary files.
 *~
+*#
+
+# OS generated files.
+.DS_STORE
