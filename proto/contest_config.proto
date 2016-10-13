@@ -1,0 +1,24 @@
+// Configuration for a contest.
+// A contest comprises of several tasks, each of which consists of several
+// test cases.
+
+syntax = "proto2";
+
+package contest_wizard;
+
+message Test {
+  optional string input = 0;
+  optional string output = 1;
+  optional int index = 2;
+  optional bool active;
+}
+
+message Task {
+  optional string name = 0;
+  repeated Test test = 1;
+}
+
+message Contest {
+  optional string name = 0;
+  repeated Task task = 1;
+}
